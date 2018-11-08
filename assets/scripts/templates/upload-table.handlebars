@@ -16,12 +16,14 @@
             <div class="col-lg-12 text-center">
               <h1 class="section-heading allFiles">All Files</h1>
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row imageRow">
                         {{#each uploads as |upload|}}
                             <div class="col-md-4 col-sm-6 portfolio-item">
                                 <div id="{{upload._id}}-uploads">
-                                    <a class="image portfolio-box portfolio-link portfolio-hover" target="_blank" href="{{upload.url}}">
-                                        <img class="img-fluid img" src="{{upload.url}}" alt="">
+                                    <a class="portfolio-box portfolio-link portfolio-hover" target="_blank" href="{{upload.url}}">
+                                        <div class="image">
+                                            <img class="img-fluid" src="{{upload.url}}" alt="">
+                                        </div>
                                     </a>
                                     <div class="portfolio-caption">
                                         <h4>{{upload.title}}</h4>
