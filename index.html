@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Xobpord</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <!-- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> -->
+      <link rel="shortcut icon" type="image/x-icon" href="https://i.imgur.com/qNWyLA6.png">
+
+      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+      <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    
+    <body class="bg" id="page-top">
+       <!-- Navigation -->
+
+       <nav class="navbar navbar-expand hidden navbar-light fixed-top" id="mainNav">
+          <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+              <img class="small" src="https://i.imgur.com/nZVbVcn.png" alt="Xobpord">
+            </a>
+            <h3 id="display-message"></h3>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <button class="nav-link js-scroll-trigger changePass btn user"> Change Password </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link js-scroll-trigger signout btn btn-default exitButton">Sign Out</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      <br />
+      <header>
+        <h3 id="display-message"></h3>
+      </header>
+
+      <br />
+      <div class="mainBody"></div>
+
+      <!-- Sign in form -->
+      <div id="signInBox" class="container-fluid">
+        <div class="row">
+          <div class="col-sm-2 col-lg-4"></div>
+          <div class="col-xs-12 col-sm-8 col-lg-4">
+            <h1 class="text-center login-title">Sign in to continue to <strong>Xobpord</strong></h1>
+            <div class="account-wall">
+              <img class="profile-img" src="https://i.imgur.com/HUnMNAp.png" alt="Xobpord">
+              <form id="sign-in-form" class="form-signin">
+                <input required placeholder="Enter email" name="credentials[email]" class="form-control" type="email"/>
+                <input required placeholder="Enter password" name="credentials[password]" class="form-control" type="password"/>
+                <input type="submit" class="btn btn-default btn-block user" value="Sign In"/>
+              </form>
+            </div>
+            <div id="sign-in-error" class="hidden"></div>
+            <h3 class="createAccount">New User? Please sign up</h3>
+            <button class="btn btn-default createAccount user"> Create Account </button>
+          </div>
+          <div class="col-sm-2 col-lg-4"></div>
+        </div>
+      </div>
+
+      <!-- Sign up form -->
+      <div id="signUpBox" class="container-fluid hidden">
+        <div class="row">
+          <div class="col-sm-2 col-lg-4"></div>
+          <div class="col-xs-12 col-sm-8 col-lg-4">
+            <h1 class="text-center login-title">Sign up to continue to <strong>Xobpord</strong></h1>
+            <div class="account-wall">
+              <img class="profile-img" src="https://i.imgur.com/HUnMNAp.png" alt="Xobpord">
+              <form id="sign-up-form" class="form-signin">
+                <input required placeholder="Enter email" name="credentials[email]" class="form-control" type="email"/>
+                <input required placeholder="Enter password" name="credentials[password]" class="form-control" type="password"/>
+                <input required placeholder="Confirm password" name="credentials[password_confirmation]" class="form-control" type="password"/>
+                <input type="submit" class="btn btn-default btn-block user" value="Sign Up"/>
+              </form>
+            </div>
+            <div id="sign-up-error" class="hidden"></div>
+            <h3 id="account" class="backToLogIn">Already have an account?  Log in and start uploading files!</h3>
+            <button id="logIn" class="btn btn-default backToLogIn user"> Back to Log In </button>
+          </div>
+          <div class="col-sm-2 col-lg-4"></div>
+        </div>
+      </div>
+
+      <!-- Password form> -->
+      <div class="password hidden">
+        <div class="row">
+          <div class="col-sm-2 col-lg-4"></div>
+          <div class="col-xs-12 col-sm-8 col-lg-4">
+            <div class="account-wall pass">
+              <form id="change-password-form">
+                <input required placeholder="Enter old password" class="inputBox" name="passwords[old]" type="password"/>
+                <input required placeholder="Enter new password" class="inputBox" name="passwords[new]" type="password"/>
+                <input type="submit" class="btn btn-default user" value="Change Password"/>
+              </form>
+              <button id="cancel" class="btn btn-default exitButton"> Cancel </button>
+            </div>
+          </div>
+          <div class="col-sm-2 col-lg-4"></div>
+        </div>
+      </div>
+      <br />
+
+      <!-- uploaded files -->
+      <br>
+      <div class="database hidden">
+        <form id='upload-form' enctype="multipart/form-data">
+          <fieldset>
+            <label>
+              <h3>Image</h3>
+              <input type="file" class="inputBox" name="image">
+            </label>
+            <label>
+              <h3>Title</h3>
+              <input type="text" class="inputBox" name="title">
+            </label>
+            <label>
+              <h3>Tag</h3>
+              <input type="text" class="inputBox" name="tag">
+            </label>
+            <input type="submit" name="submit" class="btn btn-default user" value="Upload">
+          </fieldset>
+        </form>
+        <button id="showAll" class="btn btn-default user"> Show All Images </button>
+      </div>
+      
+      <div class="uploads-table"></div>  
+    </body>
+</html>
+
